@@ -14,13 +14,12 @@ chown -R ubuntu:ubuntu /data
 
 REDIRECT="https://github.com/Hovixen/"
 
-ERR_MSG="Ceci n'est pas une page"
-
 CONFIG="server {
         listen 80;
         server_name _;
         root /var/www/html;
         index index.nginx-debian.html;
+	add_header X-Served-By $HOSTNAME;
 
 	location /hbnb_static {
 	alias /data/web_static/current;
@@ -34,7 +33,7 @@ CONFIG="server {
         error_page 404 /404_error;
         location = /404_error {
                 internal;
-                return 404 \"$ERR_MSG\n\";
+		root /var/www/html;
         }
 }"
 echo "$CONFIG" > /etc/nginx/sites-available/default
