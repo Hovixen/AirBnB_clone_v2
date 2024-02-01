@@ -6,7 +6,7 @@ apt-get -y install nginx
 
 mkdir -p /data/web_static/{releases/test,shared}
 
-echo "Holberton School" < data/web_static/releases/test/index.html
+echo "Holberton School" > data/web_static/releases/test/index.html
 
 ln -sf /data/web_static/releases/test /data/web_static/current
 
